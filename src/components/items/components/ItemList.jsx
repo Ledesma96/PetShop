@@ -1,26 +1,30 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { CartContext } from '../context/ShopingCartContext'
+import { UserContext } from '../../../context/UserContext'
+
 
 const ItemList = ({products}) => {
-    const [cart, setCart, updateCart, setUpdateCart] = useContext(CartContext) 
+    const [user, setUser, add, setAdd] = useContext(UserContext);
 
-    const addCart = async (pid) => {
-        console.log(pid, cart);
-            const response = await fetch(`http://localhost:8080/api/carts/${cart}/products/${pid}`,{
-                method:"POST"
-            })
-            try {
-                if(response.status == 201){
-                    console.log("Producto agregado al carrito");
-                    setUpdateCart(updateCart + 1)
-                } else {
-                    console.log("ocurrio un error inesperado");
-                }
-            } catch (error) {
-                console.log("No se pudo agregar producto al carrito", error, );
-            }
-    }
+
+     const addCart = async (pid) => {
+
+             const response = await fetch(`http://localhost:8080/api/carts/${user.cart}/products/${pid}`,{
+                 method:"POST"
+             })
+             try {
+                 if(response.ok){
+                    const data = await response.json()
+                    console.log(data);
+                    console.log(data.message);
+                    setAdd(add + 1)
+                 } else {
+                     console.log("ocurrio un error inesperado", data.message);
+                 }
+             } catch (error) {
+                 console.log(error.message );
+             }
+     }
   return (
     <div className='items'>
         {products?.map((prod) => (

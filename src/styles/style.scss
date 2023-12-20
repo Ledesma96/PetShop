@@ -1,3 +1,4 @@
+@import 'constantes';
 *{
     margin: 0px ;
     padding: 0;
@@ -34,7 +35,7 @@
     .navbarMobile__links-on{
         z-index: 2;
         overflow: hidden;
-        height: 200px;
+        height: 240px;
         width: 150px;
         position: absolute;
         right: 16px;
@@ -56,6 +57,13 @@
             color: white;
             display: flex;
             align-items: center;
+        }
+        .navbarMobile__links__button{
+            margin-top: 5px;
+            padding-left: 8px;
+            border: none;
+            background-color: rgb(255, 68, 0);
+            text-align: start;
         }
     }
     .navbarMobile__links-off{
@@ -136,9 +144,25 @@
     }
 }
 
+//--------------------------------------------------------------//
+//dashboard
+.navigationPanel{
+    width: 100%;
+    padding: 8px; 
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: $color-primary;
+    .navigationPanel_link{
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: black;
+    }
+}
+
 //-------------------------------------------------------------//
 //Login conponent
-
 .login{
     margin-top: 16px;
     padding-top: 8px;
@@ -148,99 +172,214 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    .login-register_container-on{
+    width: 100%;
+    height: 350px;
     display: flex;
     justify-content: center;
-    align-items:center ;
-    .login__section{
-        width: 90%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        .login__section__h1{
-            color: white;
-            padding-top: 16px;
-            padding-bottom: 8px;
-        }
-        .login__section__form{
-            width: 100%;
+    align-items:center;
+    transform: rotateY(0deg);
+    transition: all 0.5s;
+        .login__section{
+            width: 90%;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            .login__section__form__datos{
-                padding: 5px;
-                margin-top: 16px;
-                width: 80%;
+            align-items: center;
+            .login__section__h1{
                 color: white;
-                background-color: #0000005b;
-                border: none;
-                border-radius: 8px;
+                padding-top: 16px;
+                padding-bottom: 8px;
             }
-            .login__section__form__datos:focus{
-                border-color: rgb(255, 68, 0)e; 
-                box-shadow: 0 0 5px rgb(255, 68, 0); 
-                outline: none;
+            .login__section__form{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                .login__section__form__datos{
+                    padding: 5px;
+                    margin-top: 16px;
+                    width: 80%;
+                    color: white;
+                    background-color: #0000005b;
+                    border: none;
+                    border-radius: 8px;
+                }
+                .login__section__form__datos:focus{
+                    border-color: rgb(255, 68, 0)e; 
+                    box-shadow: 0 0 5px rgb(255, 68, 0); 
+                    outline: none;
+                }
+                .login__section__form__datos::placeholder{
+                    color: rgba(255, 255, 255, 0.678);
+                }
+                .login__section__form__btn{
+                    margin-top: 16px;
+                    width: 80%;
+                    background-color: #0d6efd;
+                    border: none;
+                    border-radius: 8px;
+                }
             }
-            .login__section__form__datos::placeholder{
-                color: rgba(255, 255, 255, 0.678);
-            }
-            .login__section__form__btn{
-                margin-top: 16px;
-                width: 80%;
-                background-color: #0d6efd;
-                border: none;
-                border-radius: 8px;
+            .login__section__register{
+                color: white;
+                text-decoration: none;
+                font-size: 1rem;
+                font-weight: 600;
+                margin-top: 16px ;
+               margin-bottom: 8px;
             }
         }
-        .login__section__register{
+        .login__div{
+            width: 30%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .login__div__div{
+                margin: 8px 0px;
+            }
+        }
+    }
+    .login-register_container-off{
+        width: 100%;
+        display: flex;
+        overflow: hidden;
+        height: 430px;
+        justify-content: center;
+        align-items:center;
+        transform: rotateY(180deg);
+        transition: all 0.5s;
+        .register__section__login{
             color: white;
             text-decoration: none;
             font-size: 1rem;
             font-weight: 600;
             margin-top: 16px ;
-            margin-bottom: 8px;
+             margin-bottom: 8px;
         }
-    }
-    .login__div{
-        width: 30%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .login__div__div{
-            margin: 8px 0px;
+        .register-container {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            transform:rotateY(-180deg);
+            .register-container__h2{
+                color: white;
+                padding-top: 16px;
+                padding-bottom: 8px;
+            }
+            .register-form {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                transform:rotateY(-180deg);
+                .orange-input {
+                    padding: 5px;
+                    margin-top: 16px;
+                    width: 80%;
+                    color: white;
+                    background-color: #0000005b;
+                    border: none;
+                    border-radius: 8px;
+                    transform:rotateY(-180deg);
+                  }
+                .orange-input::placeholder{
+                    color: rgba(255, 255, 255, 0.678);
+                }
+                .orange-input:focus{
+                    border-color: rgb(255, 68, 0); 
+                    box-shadow: 0 0 5px rgb(255, 68, 0); 
+                    outline: none;
+                }
+                .register-button {
+                    margin-top: 16px;
+                    width: 80%;
+                    background-color: #0d6efd;
+                    border: none;
+                    border-radius: 8px;
+                    transform:rotateY(-180deg);
+                }
+              }
+        }
+        .register__div{
+            margin: auto;
+            width: 30%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .register__div__div{
+                margin: 8px 0px;
+            }
         }
     }
 }
 
 //-------------------------------------------------------------//
-//register component
+//cart component
 
-.register-container {
-    text-align: center;
-    padding: 20px;
-    .register-form {
+.cart{
+    margin-bottom: 16px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .cart__div{
+        margin-top: 32px;
+        width: 98%;
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
         align-items: center;
-        .orange-input {
-            background-color: orange;
-            border: none;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 10px;
-            color: white;
-          }
-        .register-button {
-            background-color: orange;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            cursor: pointer;
+        .cart__div__img{
+            width: 15%;
         }
-      }
-  }
+        .cart__div__name{
+            margin: auto;
+            width: 35%;
+            font-size: 0.8rem;
+        }
+        .cart__div__div{
+            width: 25%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .cart__div__div__quantity{
+                width: 30%;
+                margin: auto;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .cart__div__div__btn{
+                width: 35%;
+                border: none;
+                border-radius: 5px;
+                background-color: rgb(255, 68, 0);
+            }
+        }
+        .cart__div__price{
+            width: 15%;
+            margin: auto;
+            margin-left: 5%;
+        }
+    }
+    .cart__total{
+        margin-top: 16px;
+        width: 95%;
+        display: flex;
+        justify-content: space-between;
+        .cart__total__h3{
+            color: #04274C;
+            font-weight: 700;
+        }
+        .cart__total__num{
+            color: #04274C;
+            font-weight: 700;
+        }
+    }
+}
 
 
 //------------------------------------------------------------------------//

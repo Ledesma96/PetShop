@@ -1,8 +1,8 @@
 import React from 'react'
-import CarrouselHome from './CarrouselHome'
-import FeaturingCategories from './FeaturingCategories'
-import NewsProducts from './NewsProducts'
-import Coments from './Coments'
+import CarrouselHome from './components/CarrouselHome'
+import FeaturingCategories from './components/FeaturingCategories'
+import NewsProducts from './components/NewsProducts'
+import Coments from './components/Coments'
 
 const Home = () => {
   return (

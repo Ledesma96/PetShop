@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import Count from './Count';
+import Count from './components/Count';
 
-export const Itemdeatil = () => {
+const Itemdetail = () => {
     const {id} = useParams();
     const [product, setProduct] = useState([]);
 
@@ -68,3 +68,5 @@ export const Itemdeatil = () => {
     
   )
 }
+
+export default Itemdetail

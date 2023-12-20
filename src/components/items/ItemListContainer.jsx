@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import ItemList from './ItemList';
+import ItemList from './components/ItemList';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
@@ -61,11 +61,12 @@ const ItemListContainer = () => {
     useEffect(() => {
         async function fetchProducts() {
             try {
-                const response = await fetch(`http://localhost:8080/api/products?category=${category}&tipo=${type}&limit=4&sort=${sort}&max=${maxPrice}&min=${minPrice}&page=${page}`)
-
-                if(response.status == 201){
+                const response = await fetch(`http://localhost:8080/api/products?category=${category}&tipo=${type}&limit=5&sort=${sort}&max=${maxPrice}&min=${minPrice}&page=${page}`)
+                console.log(response);
+                if(response.ok){
                     const data = await response.json();
-                    const {docs, nextPage, prevPage, totalPages} = data;
+                    console.log(data);
+                    const {docs, nextPage, prevPage, totalPages} = data.products;
                     setProducts(docs);
                     setNextPage(nextPage);
                     setPrevPage(prevPage);

@@ -8,9 +8,9 @@ const NewsProducts = () => {
     async function fetchProducts() {
       try {
         const response = await fetch(`http://localhost:8080/api/products`);
-        if (response.status == 201) {
+        if (response.status == 200) {
           const data = await response.json();
-          const {docs} = data;
+          const {docs} = data.products;
           setProducts(docs);
         } else {
           console.error('Error fetching products:', response.statusText);
