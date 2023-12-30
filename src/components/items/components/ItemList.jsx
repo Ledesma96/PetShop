@@ -9,7 +9,7 @@ const ItemList = ({products}) => {
 
      const addCart = async (pid) => {
 
-             const response = await fetch(`http://localhost:8080/api/carts/${user.cart}/products/${pid}`,{
+             const response = await fetch(import.meta.env.VITE_BACKEND_URL + `api/carts/${user.cart}/products/${pid}`,{
                  method:"POST"
              })
              try {
@@ -35,9 +35,9 @@ const ItemList = ({products}) => {
                     <p className="items__section__div__p">Stock: {prod.stock}</p>
                     {prod.stock > 0 ? <p className="items__section__div__p">Disponible</p> : <p className="items__section__div__p">Sin stock</p>}
                     <h4 className="items__section__div__h4">${prod.price}</h4>
-                    <div>
-                        <button disabled={prod.stock == 0} className="items__section__div__btn" onClick={() => addCart(prod._id)}>Agregar al carrito</button>
-                        <Link to={`/detail/${prod._id}`} className="items__section__div__des">Detalles</Link>
+                    <div className='items__section__div__div'>
+                        <button disabled={prod.stock == 0} className="items__section__div__div__btn" onClick={() => addCart(prod._id)}>Agregar al carrito</button>
+                        <Link to={`/detail/${prod._id}`} className="items__section__div__div__des">Detalles</Link>
                     </div>
                 </div>
             </section>

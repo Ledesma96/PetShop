@@ -61,7 +61,7 @@ const ItemListContainer = () => {
     useEffect(() => {
         async function fetchProducts() {
             try {
-                const response = await fetch(`http://localhost:8080/api/products?category=${category}&tipo=${type}&limit=5&sort=${sort}&max=${maxPrice}&min=${minPrice}&page=${page}`)
+                const response = await fetch(import.meta.env.VITE_BACKEND_URL + `api/products?category=${category}&tipo=${type}&limit=5&sort=${sort}&max=${maxPrice}&min=${minPrice}&page=${page}`)
                 console.log(response);
                 if(response.ok){
                     const data = await response.json();

@@ -1,7 +1,9 @@
 import { Route, HashRouter as Router, Routes  } from 'react-router-dom'
 import "./styles/style.scss"
 import { UserProvider } from './context/UserContext'
-import { Cart, Login, Dashboard, Navbar, ItemListContainer, Itemdetail, Home, Footer} from './components/index.js'
+import { Cart, Login, Dashboard, Navbar, ItemListContainer, Itemdetail, Home, Footer, Contact, Profile, MyShopping} from './components/index.js'
+import { PurchaseDetails } from './components/profile/components/PurchaseDetails.jsx'
+
 function App() {
 
 
@@ -16,6 +18,10 @@ function App() {
             <Route exact path='/login' element={<Login></Login>}/>
             <Route exact path='/dashboard/*' element={<Dashboard></Dashboard>}/>
             <Route exact path='/cart' element={<Cart></Cart>}/>
+            <Route exact path='/contact' element={<Contact></Contact>}/>
+            <Route exact path='/profile' element={<Profile></Profile>}/>
+            <Route exact path='/my-shopping' element={<MyShopping></MyShopping>}/>
+            <Route exact path='/my-shopping/:id' element={<PurchaseDetails></PurchaseDetails>}/>
           </Routes>
           <Footer></Footer>
         </Router>

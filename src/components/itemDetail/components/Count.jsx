@@ -1,8 +1,11 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useContext } from 'react'
 import { useState } from 'react';
+import { UserContext } from '../../../context/UserContext.jsx';
 
-const Count = ({stock}) => {
-    const [counter, setCounter] = useState (0);
+const Count = ({stock, id, setNotification}) => {
+    const [user] = useContext(UserContext)
+    const [counter, setCounter] = useState (1);
 
     const suma = () => {
         if(counter == stock){
@@ -17,8 +20,21 @@ const Count = ({stock}) => {
         } else {
             return setCounter(0)
         }
-        
     }
+ 
+        const AddProduct = async() => {
+            const response = await axios.post(import.meta.env.VITE_BACKEND_URL + `api/carts/${user.cart}/products/${id}`, {quantity: counter})
+            if(response.data.success){
+                console.log(response.data.message);
+                setNotification(true)
+                 setTimeout(() => {
+                     setNotification(false)
+                }, 1700)
+            } else {
+                console.log(response.data.message);
+            }
+        }
+
 
   return (
     <div className='count'>
@@ -27,7 +43,7 @@ const Count = ({stock}) => {
                 <p className='count__div__p'>{counter}</p>
             <button className='count__div__btn' onClick={suma}>+</button>
         </div>
-        <button className='count__btn'>Agregar al carrito</button>
+        <button disabled={stock == 0 && true} className='count__btn' onClick={() => AddProduct()}>Agregar al carrito</button>
     </div>
   )
 }

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-
 const Login = () => {
   const [register, setRegister] = useState(false)
   //register
@@ -24,7 +23,7 @@ const Login = () => {
     e.preventDefault();
     
     try {
-      const response = await fetch('http://localhost:8080/api/session/register', {
+      const response = await fetch(import.meta.env.VITE_BACKEND_URL + 'api/session/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -63,7 +62,7 @@ const Login = () => {
     e.preventDefault()
 
     try {
-      const response = await fetch('http://localhost:8080/api/session/login', {
+      const response = await fetch(import.meta.env.VITE_BACKEND_URL + 'api/session/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

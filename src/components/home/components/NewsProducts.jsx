@@ -7,7 +7,7 @@ const NewsProducts = () => {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const response = await fetch(`http://localhost:8080/api/products`);
+        const response = await fetch(import.meta.env.VITE_BACKEND_URL + `api/products`);
         if (response.status == 200) {
           const data = await response.json();
           const {docs} = data.products;
