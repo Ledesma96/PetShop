@@ -23,7 +23,7 @@ export const PurchaseDetails = () => {
         fetchData()
     },[])
   return (
-    <>
+    <div className='purchases_detail'>
         {purchase.map((item) =>
         <div key={item._id} className='detail-card'>
             <img className='detail-card_img' src={item.pid.image} alt={'imagen de' + item.pid.name} />
@@ -32,6 +32,6 @@ export const PurchaseDetails = () => {
             <p className='detail-card_p'>${item.pid.price}</p>
         </div>
         )}
-    </>
+    </div>
   )
 }

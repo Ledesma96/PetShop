@@ -1,10 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../../../context/UserContext'
 
 
 const ItemList = ({products}) => {
     const [user, setUser, add, setAdd] = useContext(UserContext);
+    const [combinedProducts, setCombinedProducts] = useState([]);
 
 
      const addCart = async (pid) => {
@@ -25,9 +26,21 @@ const ItemList = ({products}) => {
                  console.log(error.message );
              }
      }
+
+     useEffect(() => {
+        if (products) {
+          const productsWithStockZero = products.filter((item) => item.stock === 0);
+          const productsWithoutStockZero = products.filter((item) => item.stock !== 0);
+    
+          const newCombinedProducts = [...productsWithoutStockZero, ...productsWithStockZero];
+    
+          setCombinedProducts(newCombinedProducts);
+        }
+      }, [products]);
+      
   return (
     <div className='items'>
-        {products?.map((prod) => (
+        {combinedProducts?.map((prod) => (
             <section className={prod.stock == 0 ? "items__section__disabled" :"items__section"} key={prod._id}>
                 <img className='items__section__img' src={prod.image} alt={prod.name} />
                 <div className='items__section__div'>

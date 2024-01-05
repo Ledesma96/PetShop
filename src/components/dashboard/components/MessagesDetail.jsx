@@ -22,14 +22,17 @@ const MessagesDetail = () => {
         fetchData()
     },[])
 
-    const formattedDate = new Intl.DateTimeFormat('es-AR', {
+    const formattedDate = message.date
+    ? new Intl.DateTimeFormat('es-AR', {
         year: 'numeric',
         month: 'numeric',
         day: 'numeric',
         hour: 'numeric',
         minute: 'numeric',
         timeZone: 'America/Argentina/Buenos_Aires',
-      }).format(new Date(message.date));
+      }).format(new Date(message.date))
+    : 'Fecha no disponible';
+  
   return (
     <>  
         <div className='date'>

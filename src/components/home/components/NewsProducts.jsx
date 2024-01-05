@@ -7,11 +7,10 @@ const NewsProducts = () => {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const response = await fetch(import.meta.env.VITE_BACKEND_URL + `api/products`);
+        const response = await fetch(import.meta.env.VITE_BACKEND_URL + `api/products/all-products`);
         if (response.status == 200) {
           const data = await response.json();
-          const {docs} = data.products;
-          setProducts(docs);
+          setProducts(data.products.slice(-8));
         } else {
           console.error('Error fetching products:', response.statusText);
         }
@@ -22,7 +21,6 @@ const NewsProducts = () => {
 
     fetchProducts();
   }, []);
-
   
   return (
     <div className="new">
@@ -33,7 +31,7 @@ const NewsProducts = () => {
       <div className="new__cards">
       {products.length == 0 ?  (
          <>
-            <div className="new__cards__card mt-4">
+            <div className="new__cards__card m-3">
               <p className="new__cards__card__new">Nuevo</p>
               <div className="new__cards__card__img-skeleton"></div>
               <div className="new__cards__card__h2-skeleton"></div>
@@ -43,7 +41,7 @@ const NewsProducts = () => {
                 <button className="new__cards__card__section__btn-skeleton"></button>
               </section>
             </div>
-            <div className="new__cards__card mt-4">
+            <div className="new__cards__card m-3">
               <p className="new__cards__card__new">Nuevo</p>
               <div className="new__cards__card__img-skeleton"></div>
               <div className="new__cards__card__h2-skeleton"></div>
@@ -53,7 +51,7 @@ const NewsProducts = () => {
                 <button className="new__cards__card__section__btn-skeleton"></button>
               </section>
             </div>
-            <div className="new__cards__card mt-4">
+            <div className="new__cards__card m-3">
               <p className="new__cards__card__new">Nuevo</p>
               <div className="new__cards__card__img-skeleton"></div>
                     <div className="new__cards__card__h2-skeleton"></div>
@@ -63,7 +61,7 @@ const NewsProducts = () => {
                 <button className="new__cards__card__section__btn-skeleton"></button>
               </section>
             </div>
-            <div className="new__cards__card mt-4">
+            <div className="new__cards__card m-3">
               <p className="new__cards__card__new">Nuevo</p>
               <div className="new__cards__card__img-skeleton"></div>
               <div className="new__cards__card__h2-skeleton"></div>
@@ -73,7 +71,7 @@ const NewsProducts = () => {
                 <button className="new__cards__card__section__btn-skeleton"></button>
               </section>
             </div>
-            <div className="new__cards__card mt-4">
+            <div className="new__cards__card m-3">
               <p className="new__cards__card__new">Nuevo</p>
               <div className="new__cards__card__img-skeleton"></div>
               <div className="new__cards__card__h2-skeleton"></div>
@@ -83,7 +81,7 @@ const NewsProducts = () => {
                 <button className="new__cards__card__section__btn-skeleton"></button>
               </section>
             </div>
-            <div className="new__cards__card mt-4">
+            <div className="new__cards__card m-3">
               <p className="new__cards__card__new">Nuevo</p>
               <div className="new__cards__card__img-skeleton"></div>
               <div className="new__cards__card__h2-skeleton"></div>
@@ -96,7 +94,7 @@ const NewsProducts = () => {
           </> 
           ): (
         products.map((prod) => (
-          <div key={prod._id} className="new__cards__card mt-4">
+          <div key={prod._id} className="new__cards__card m-3">
             <p className="new__cards__card__new">Nuevo</p>
             <img className="new__cards__card__img" src={prod.image} alt=""/>
             <h2 className="new__cards__card__h2">{prod.name}</h2>

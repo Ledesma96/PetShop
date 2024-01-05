@@ -114,7 +114,7 @@ const Cart = () => {
             return (
                 <div className='cart__div' key={item._id}>
                     <img className='cart__div__img' src={item.pid.image} alt={item.pid.name}/>
-                    <p className='cart__div__name'>{firstTwoWords}</p>
+                    <h3 className='cart__div__name'>{firstTwoWords}</h3>
                     <div className='cart__div__div'>
                         <button disabled={(item.quantity == 1) || isBtnDisabled } className='cart__div__div__btn' onClick={() => removeQuantity(item.pid._id)}>-</button>
                         <p className='cart__div__div__quantity'>{item.quantity}</p>
